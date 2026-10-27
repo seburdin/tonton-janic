@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L’Affaire de la Moustache d’Or</title>
+<meta name="description" content="Un jeu d’enquête de détective privé, drôle et plein d’énigmes, en français.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="pluie" aria-hidden="true"></div>
+
+<!-- ===== Écran titre ===== -->
+<section id="ecran-titre" class="ecran">
+  <div class="titre-carte">
+    <div class="tampon">CONFIDENTIEL</div>
+    <p class="sur-titre">Dossier n° 1997-60 · Saint-Glinglin-sur-Mer</p>
+    <svg class="moustache" viewBox="0 0 200 80" aria-hidden="true">
+      <defs>
+        <linearGradient id="or" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffe9a0"/>
+          <stop offset=".5" stop-color="#e8b93e"/>
+          <stop offset="1" stop-color="#9c6b12"/>
+        </linearGradient>
+      </defs>
+      <path d="M100 30 C 85 8, 55 8, 40 33 C 30 50, 15 55, 4 44 C 10 66, 42 76, 66 60 C 80 52, 92 45, 100 42 C 108 45, 120 52, 134 60 C 158 76, 190 66, 196 44 C 185 55, 170 50, 160 33 C 145 8, 115 8, 100 30 Z" fill="url(#or)" stroke="#6b4a0c" stroke-width="2"/>
+    </svg>
+    <h1>L’Affaire de la<br><span>Moustache d’Or</span></h1>
+    <p class="sous-titre">Une enquête de détective privé.<br>Avec énigmes, suspects louches et beaucoup trop de gâteau.</p>
+    <label for="nom" class="etiquette">Votre nom de détective</label>
+    <input id="nom" maxlength="20" value="Lafouine" autocomplete="off">
+    <div class="boutons-titre">
+      <button id="btn-nouvelle" class="btn btn-rouge">🔎 Nouvelle enquête</button>
+      <button id="btn-reprendre" class="btn" hidden>📂 Reprendre l’enquête</button>
+    </div>
+    <p class="mini">Durée : 30 à 45 minutes · Son : 🔊 (désactivable)</p>
+  </div>
+</section>
+
+<!-- ===== Introduction ===== -->
+<section id="ecran-intro" class="ecran" hidden>
+  <div class="intro-carte">
+    <div id="intro-texte" class="tape"></div>
+    <div class="intro-boutons">
+      <button id="intro-passer" class="btn-lien">Passer l’intro</button>
+      <button id="intro-suite" class="btn btn-rouge">Suite ▸</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Jeu ===== -->
+<div id="jeu" hidden>
+  <header class="barre">
+    <div class="barre-titre"><span class="ico">🥸</span> <span>La Moustache d’Or</span></div>
+    <div class="barre-stats">
+      <span class="stat" title="Heure de l’enquête">🕰️ <b id="horloge">23:00</b></span>
+      <span class="stat" title="Votre flair (score)">👃 Flair <b id="flair">0</b></span>
+    </div>
+    <div class="barre-actions">
+      <button id="btn-carnet" class="btn-icone" title="Carnet d’enquête">📒<span class="lbl"> Carnet</span> <span id="nb-indices" class="pastille">0</span></button>
+      <button id="btn-sac" class="btn-icone" title="Votre sac">🎒<span class="lbl"> Sac</span></button>
+      <button id="btn-aide" class="btn-icone" title="Demander un indice (−5 flair)">💡<span class="lbl"> Aide</span></button>
+      <button id="btn-son" class="btn-icone" title="Son">🔊</button>
+      <button id="btn-accuser" class="btn-accuser" title="Désigner le coupable">⚖️ J’accuse !</button>
+    </div>
+  </header>
+  <nav id="lieux" class="lieux" aria-label="Lieux"></nav>
+  <main class="plateau">
+    <section id="scene" class="scene"></section>
+    <aside class="narration" aria-live="polite">
+      <div class="narration-tete">🕵️ <span id="narr-nom">Détective</span> <small>(cliquez pour accélérer)</small></div>
+      <div id="narration-texte" class="tape"></div>
+    </aside>
+  </main>
+</div>
+
+<!-- ===== Fenêtre ===== -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-fond"></div>
+  <div class="modal-boite" role="dialog" aria-modal="true">
+    <button class="modal-fermer" aria-label="Fermer">✕</button>
+    <div id="modal-contenu"></div>
+  </div>
+</div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="jeu.js"></script>
+</body>
+</html>
